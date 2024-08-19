@@ -7,7 +7,7 @@
 ############                                                                                                         ############
 ############                DO NOT MODIFY THIS FILE. THIS FILE IS HASHED AND UPDATED AUTOMATICALLY.                  ############
 ############                    ANY CHANGES MADE TO THIS FILE WILL BE OVERWRITTEN BY COMMITS TO                      ############
-############                       https://github.com/ChrisTitusTech/powershell-profile.git.                         ############
+############                       https://github.com/krzkraw/powershell-profile.git.                         ############
 ############                                                                                                         ############
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
 ############                                                                                                         ############
@@ -43,7 +43,8 @@ function Update-Profile {
     }
 
     try {
-        $url = "https://raw.githubusercontent.com/ChrisTitusTech/powershell-profile/main/Microsoft.PowerShell_profile.ps1"
+        # !!!!! If anybody uses this fork, !BEWARE!, you will be updating from my repo !!!!!
+        $url = "https://raw.githubusercontent.com/krzkraw/powershell-profile/main/Microsoft.PowerShell_profile.ps1"
         $oldhash = Get-FileHash $PROFILE
         Invoke-RestMethod $url -OutFile "$env:temp/Microsoft.PowerShell_profile.ps1"
         $newhash = Get-FileHash "$env:temp/Microsoft.PowerShell_profile.ps1"
@@ -57,7 +58,7 @@ function Update-Profile {
         Remove-Item "$env:temp/Microsoft.PowerShell_profile.ps1" -ErrorAction SilentlyContinue
     }
 }
-Update-Profile
+# Update-Profile I do not want auto checking for updates 
 
 function Update-PowerShell {
     if (-not $global:canConnectToGitHub) {
@@ -87,7 +88,7 @@ function Update-PowerShell {
         Write-Error "Failed to update PowerShell. Error: $_"
     }
 }
-Update-PowerShell
+# Update-PowerShell I do not want auto checking for updates 
 
 
 # Admin Check and Prompt Customization
@@ -438,4 +439,4 @@ pst - Retrieves text from the clipboard.
 Use 'Show-Help' to display this help message.
 "@
 }
-Write-Host "Use 'Show-Help' to display help"
+Write-Host "Use 'Show-Help' to display help. This is a fork of CTT's powershell profile :) Thx mate!"
